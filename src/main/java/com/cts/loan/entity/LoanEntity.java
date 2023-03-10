@@ -1,27 +1,20 @@
 package com.cts.loan.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
 import org.springframework.stereotype.Component;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
-
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @NoArgsConstructor
-//@AllArgsConstructor
 @Getter
 @Setter
 @Component
@@ -72,9 +65,4 @@ public class LoanEntity {
 	@JsonBackReference
 	@JoinColumn(name = "user_name")
 	private UserEntity user;
-	
-//	@Column(name = "user_name",updatable=false,insertable=false)
-//	private String username;
-	
-
 }

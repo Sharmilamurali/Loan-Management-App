@@ -30,14 +30,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(cusUserDetailsService);
-
 	}
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return NoOpPasswordEncoder.getInstance();
 	}
-	
+
 //	 @Bean
 //	    public BCryptPasswordEncoder encoder(){
 //	        return new BCryptPasswordEncoder();
@@ -47,11 +46,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
 		http.headers().frameOptions().disable();
-		http.csrf().disable().authorizeRequests().antMatchers("/**")
-				.permitAll().anyRequest().authenticated()
-				.and().exceptionHandling().and().sessionManagement()
-				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-		http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);;
+		http.csrf().disable().authorizeRequests().antMatchers("/**").permitAll().anyRequest().authenticated().and()
+				.exceptionHandling().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+		;
 	}
 
 	@Override
@@ -59,20 +57,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public AuthenticationManager authenticationManagerBean() throws Exception {
 		return super.authenticationManagerBean();
 	}
-	
+
 	@Bean
-    public WebMvcConfigurer corsConfigurer() {
-            return new WebMvcConfigurer() {
-                    @Override
-                    public void addCorsMappings(CorsRegistry registry) {
-                            registry.addMapping("/**")
-                                    .allowedOrigins("http://localhost:4200")
-                                    .allowedHeaders("*")
-                                    .allowedMethods("GET", "POST", "PUT", "DELETE")
-                                    .maxAge(3600);
-                    }
-
-            }; 
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/**").allowedOrigins("http://localhost:4200").allowedHeaders("*")
+						.allowedMethods("GET", "POST", "PUT", "DELETE").maxAge(3600);
+			}
+		};
 	}
-
 }

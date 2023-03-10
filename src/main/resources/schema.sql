@@ -2,8 +2,6 @@ Create TABLE ROLES (
 						Role_Id INT PRIMARY KEY,
 						Role_Name varchar(20));
 
-
-
 Create TABLE USERDATA (
 						user_id varchar(20) NOT NULL,
 						user_password varchar(20) NOT NULL,
@@ -11,10 +9,6 @@ Create TABLE USERDATA (
 						Role_Id INT,
 					    FOREIGN KEY (Role_Id) REFERENCES ROLES(Role_Id));
 						
---ALTER TABLE USERDATA
---ADD CONSTRAINT fk_role_id
---FOREIGN KEY (Role_Id) REFERENCES ROLES(Role_Id);
-
 Create TABLE LOANDATA (
 						Loan_No INT primary key,
 						Loan_Type varchar(20),

@@ -22,33 +22,5 @@ public class AuthService implements UserDetailsService {
 		Optional<UserEntity> custuser = userRepository.findByUsername(username);
 		return custuser.map(UserPrincipal::new)
 				.orElseThrow(() -> new UsernameNotFoundException(username + "Not Found"));
-		// return new
-		// UserPrincipal(custuser.getUsername(),custuser.getUserpassword(),authorities);
 	}
 }
-//		List<GrantedAuthority> authorities=buildUserAuthority(custuser.getRoles());
-//		return custuser;
-// RolesEntity role=custuser.getRoles();
-// return new
-// UserPrincipal(custuser.getUsername(),custuser.getUserpassword(),role.getRoleName());
-
-//	private UserEntity buildUserAuthentication(custuser,List<GrantedAuthority> authorities) {
-//		 return new UserEntity(custuser.getUsername(), custuser.getUserpassword(),
-//		            true, true, true, true, authorities);
-//	}
-//	
-//	private List<GrantedAuthority> buildUserAuthority(Set<Roles> userRoles) {
-//
-//        Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
-//
-//        // add user's authorities
-//        for (RolesEntity userRole : userRoles) {
-//            setAuths.add(new SimpleGrantedAuthority(userRole.getRoleName()));
-//        }
-//
-//        List<GrantedAuthority> Result = new ArrayList<GrantedAuthority>(setAuths);
-//
-//        return Result;
-//    }
-//
-//}

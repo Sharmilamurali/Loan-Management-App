@@ -2,11 +2,9 @@ package com.cts.loan.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,7 +12,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import com.cts.loan.entity.LoanEntity;
 import com.cts.loan.entity.UserEntity;
 import com.cts.loan.exception.LoanNotFoundException;
@@ -64,8 +61,8 @@ public class LoanServiceTest {
 	@Test
 	public void testsearchByLoanNoAndOrFirstAndOrLastName() throws LoanNotFoundException {
 		when(loanRepository
-				.findByLoanNoContainingIgnoreCaseAndFirstNameContainingIgnoreCaseAndLastNameContainingIgnoreCase("",
-						"", ""))
+				.findByLoanNoContainingIgnoreCaseAndFirstNameContainingIgnoreCaseAndLastNameContainingIgnoreCase("", "",
+						""))
 				.thenReturn(loanlist);
 		List<LoanEntity> loan = loanService.searchByLoanNoAndOrFirstAndOrLastName("", "", "");
 		assertEquals(loanlist, loan);

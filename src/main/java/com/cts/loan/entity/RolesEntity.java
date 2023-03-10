@@ -1,17 +1,13 @@
 package com.cts.loan.entity;
 
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import org.springframework.stereotype.Component;
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,13 +28,8 @@ public class RolesEntity {
 
 	@Column(name = "Role_Name")
 	private String roleName;
-	
-//	@OneToMany(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "Role_Id",referencedColumnName = "Role_Id")
-//	private List<UserEntity> userEntity;
-	
+
 	@OneToMany(mappedBy = "roles")
 	@JsonManagedReference
 	private List<UserEntity> userEntity;
-
 }

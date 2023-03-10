@@ -66,7 +66,6 @@ public class LoanService {
 
 	public String deleteLoan(String loanNo) throws LoanNotFoundException {
 		Optional<LoanEntity> opt = loanRepository.findById(loanNo);
-
 		if (opt.isPresent()) {
 			loanRepository.deleteById(loanNo);
 			return "Deleted";
@@ -99,12 +98,10 @@ public class LoanService {
 
 	public LoanEntity getLoanbyLoanNo(String loanNo) throws LoanNotFoundException {
 		Optional<LoanEntity> opt = loanRepository.findById(loanNo);
-
 		if (opt.isPresent()) {
 			return opt.get();
 		} else {
 			throw new LoanNotFoundException("NOT FOUND");
 		}
-
 	}
 }
