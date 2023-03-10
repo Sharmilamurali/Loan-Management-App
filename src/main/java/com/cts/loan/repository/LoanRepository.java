@@ -16,8 +16,5 @@ public interface LoanRepository extends JpaRepository<LoanEntity, String> {
 
 	List<LoanEntity> findByUser(UserEntity user);
 
-	List<LoanEntity> findByUserAndLoanNoContainingIgnoreCase(UserEntity user,String loanNo);
-
-	//LoanEntity findByLoanNo(String loanNo);
-
+	List<LoanEntity> findByUserAndLoanNoContainingIgnoreCase(UserEntity user, String loanNo);
 }

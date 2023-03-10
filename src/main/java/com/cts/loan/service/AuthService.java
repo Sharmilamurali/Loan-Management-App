@@ -21,6 +21,6 @@ public class AuthService implements UserDetailsService {
 
 		Optional<UserEntity> custuser = userRepository.findByUsername(username);
 		return custuser.map(UserPrincipal::new)
-				.orElseThrow(() -> new UsernameNotFoundException(username + "Not Found"));
+				.orElseThrow(() -> new UsernameNotFoundException("Bad credentials"));
 	}
 }
