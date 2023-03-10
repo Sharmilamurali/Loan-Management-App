@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,6 +23,7 @@ import com.cts.loan.entity.UserEntity;
 import com.cts.loan.exception.LoanNotFoundException;
 import com.cts.loan.service.LoanService;
 
+@RequestMapping("/loan")
 @RestController
 public class LoanController {
 
